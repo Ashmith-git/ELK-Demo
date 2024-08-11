@@ -132,6 +132,7 @@ services:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
       # (!) TLS certificates. Generate using the 'tls' service.
       - ./tls/certs/ca/ca.crt:/usr/share/kibana/config/ca.crt:ro,z
+      # Zifo certificates for Kibana TLS configuration
       - ./kibana/certs/Zifornd02Sep2025.crt:/usr/share/kibana/certs/Zifornd02Sep2025.crt:ro,z
       - ./kibana/certs/Zifornd03Sep2024_d.key:/usr/share/kibana/certs/Zifornd03Sep2024_d.key:ro,z
     ports:
