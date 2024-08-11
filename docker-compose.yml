@@ -68,6 +68,7 @@ services:
       - elasticsearch
 
   elasticsearch:
+    container_name: dca-es-node
     build:
       context: elasticsearch/
       args:
@@ -97,6 +98,7 @@ services:
     restart: unless-stopped
 
   logstash:
+    container_name: dca-ls-node
     build:
       context: logstash/
       args:
@@ -121,6 +123,7 @@ services:
     restart: unless-stopped
 
   kibana:
+    container_name: dca-kb-node
     build:
       context: kibana/
       args:
@@ -129,8 +132,8 @@ services:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
       # (!) TLS certificates. Generate using the 'tls' service.
       - ./tls/certs/ca/ca.crt:/usr/share/kibana/config/ca.crt:ro,z
-      - ./tls/certs/kibana/kibana.crt:/usr/share/kibana/config/kibana.crt:ro,Z
-      - ./tls/certs/kibana/kibana.key:/usr/share/kibana/config/kibana.key:ro,Z
+      - ./kibana/certs/Zifornd02Sep2025.crt:/usr/share/kibana/certs/Zifornd02Sep2025.crt:ro,z
+      - ./kibana/certs/Zifornd03Sep2024_d.key:/usr/share/kibana/certs/Zifornd03Sep2024_d.key:ro,z
     ports:
       - 5601:5601
     environment:
