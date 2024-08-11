@@ -27,9 +27,14 @@ elasticsearch.ssl.certificateAuthorities: [ config/ca.crt ]
 ## Communications between web browsers and Kibana
 ## see https://www.elastic.co/guide/en/kibana/current/configuring-tls.html#configuring-tls-browser-kib
 #
-server.ssl.enabled: false
-server.ssl.certificate: config/kibana.crt
-server.ssl.key: config/kibana.key
+# server.ssl.enabled: false
+# server.ssl.certificate: config/kibana.crt
+# server.ssl.key: config/kibana.key
+
+server.ssl.enabled: true
+server.ssl.certificate: /usr/share/kibana/certs/Zifornd02Sep2025.crt
+server.ssl.key: /usr/share/kibana/certs/Zifornd03Sep2024_d.key
+
 
 ## Encryption keys (optional but highly recommended)
 ##
