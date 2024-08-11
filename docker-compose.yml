@@ -63,7 +63,7 @@ services:
       MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD:-}
       BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
     networks:
-      - elk
+      - dca-elk
     depends_on:
       - elasticsearch
 
@@ -81,8 +81,8 @@ services:
       - ./tls/certs/elasticsearch/elasticsearch.crt:/usr/share/elasticsearch/config/elasticsearch.crt:ro,z
       - ./tls/certs/elasticsearch/elasticsearch.key:/usr/share/elasticsearch/config/elasticsearch.key:ro,z
     ports:
-      - 9200:9200
-      - 9300:9300
+      - 5601:9200
+      - 5602:9300
     environment:
       node.name: elasticsearch
       ES_JAVA_OPTS: -Xms512m -Xmx512m
@@ -94,7 +94,7 @@ services:
       # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
       discovery.type: single-node
     networks:
-      - elk
+      - dca-elk
     restart: unless-stopped
 
   logstash:
@@ -117,7 +117,7 @@ services:
       LS_JAVA_OPTS: -Xms256m -Xmx256m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
     networks:
-      - elk
+      - dca-elk
     depends_on:
       - elasticsearch
     restart: unless-stopped
@@ -136,17 +136,17 @@ services:
       - ./kibana/certs/Zifornd02Sep2025.crt:/usr/share/kibana/certs/Zifornd02Sep2025.crt:ro,z
       - ./kibana/certs/Zifornd03Sep2024_d.key:/usr/share/kibana/certs/Zifornd03Sep2024_d.key:ro,z
     ports:
-      - 5601:5601
+      - 5605:5601
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
     networks:
-      - elk
+      - dca-elk
     depends_on:
       - elasticsearch
     restart: unless-stopped
 
 networks:
-  elk:
+  dca-elk:
     driver: bridge
 
 volumes:
