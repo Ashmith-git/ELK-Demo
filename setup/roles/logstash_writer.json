@@ -9,12 +9,7 @@
       "names": [
         "logs-generic-default",
         "logstash-*",
-<<<<<<< HEAD
         "ecs-logstash-*","dca-*","export-*"
-=======
-        "ecs-logstash-*",
-        "dca-*","export-*"
->>>>>>> 8d3856a2b42109a5699d61548db3309a03a1a2cd
       ],
       "privileges": [
         "write",
@@ -27,12 +22,7 @@
     {
       "names": [
         "logstash",
-<<<<<<< HEAD
         "ecs-logstash","dca-*","export-*"
-=======
-        "ecs-logstash",
-        "dca-*","export-*"
->>>>>>> 8d3856a2b42109a5699d61548db3309a03a1a2cd
       ],
       "privileges": [
         "write",
