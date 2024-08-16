@@ -10,7 +10,7 @@
         "logs-generic-default",
         "logstash-*",
         "ecs-logstash-*",
-        "dca-*"
+        "dca-*","export-*"
       ],
       "privileges": [
         "write",
@@ -24,7 +24,7 @@
       "names": [
         "logstash",
         "ecs-logstash",
-        "dca-*"
+        "dca-*","export-*"
       ],
       "privileges": [
         "write",
